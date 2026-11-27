@@ -1,0 +1,15 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente (nunca subir credenciais no GitHub!)
+.env
+backend/.env
+
+# Build Angular
+frontend/dist/
+frontend/.angular/
+
+# Logs e arquivos do sistema
+*.log
+.DS_Store
+Thumbs.db

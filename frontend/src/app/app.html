@@ -1,0 +1,34 @@
+<div class="container">
+  <header class="topo">
+    <h1>Gestor Financeiro Pessoal</h1>
+    <p>Controle suas receitas, despesas, categorias e saldo em tempo real.</p>
+  </header>
+
+  @if (erro()) {
+    <div class="alerta-erro" role="alert">
+      {{ erro() }}
+    </div>
+  }
+
+  <app-resumo-financeiro [resumo]="resumo()" />
+
+  <div class="grid-principal">
+    <app-movimentacao-form
+      [movimentacaoEdicao]="movimentacaoEdicao()"
+      (salvar)="aoSalvarMovimentacao($event)"
+      (cancelarEdicao)="aoCancelarEdicao()"
+    />
+
+    <app-grafico-categorias [movimentacoes]="todasMovimentacoes()" />
+  </div>
+
+  <app-movimentacao-lista
+    [movimentacoes]="movimentacoes()"
+    [filtroCategoria]="filtroCategoria()"
+    [filtroTipo]="filtroTipo()"
+    (alterarFiltroCategoria)="aoAlterarFiltroCategoria($event)"
+    (alterarFiltroTipo)="aoAlterarFiltroTipo($event)"
+    (editar)="aoEditar($event)"
+    (excluir)="aoExcluir($event)"
+  />
+</div>
